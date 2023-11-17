@@ -4,13 +4,10 @@ from tkinter import ttk
 
 
 root = Tk()     
-root.title("Приложение на Tkinter")     
+root.title("CyberPunk 2020 GM's toolkit v 0.1")     
 root.geometry("350x420")
 
 root.resizable(True, True)
-
-label = Label(text="CyberPunk 2020 GM's toolkit v 0.1") 
-
 
 for c in range(3): root.columnconfigure(index=c, weight=1)
 for r in range(4): root.rowconfigure(index=r, weight=1)
@@ -23,6 +20,21 @@ InventoryManager.grid(row=1, column=0, ipadx=10, ipady=5, padx=0, pady=0)
 
 DiceRoller = ttk.Button(text="Роллер")
 DiceRoller.grid(row=1,column=1,ipadx=10, ipady=5, padx=0, pady=0)
+
+FastCharSystem = ttk.Button(text="Генератор NPC")
+FastCharSystem.grid(row=1,column=2,ipadx=10, ipady=5, padx=0, pady=0)
+
+FightClub = ttk.Button(text="Бой")
+FightClub.grid(row=2,column=0,ipadx=10, ipady=5, padx=0, pady=0)
+
+Shop = ttk.Button(text="Магазин")
+Shop.grid(row=2,column=1,ipadx=10, ipady=5, padx=0, pady=0)
+
+DataForts = ttk.Button(text="ДатаФорт")
+DataForts.grid(row=2,column=2,ipadx=10, ipady=5, padx=0, pady=0)
+
+DrugLab = ttk.Button(text="Лаборатория")
+DrugLab.grid(row=3,column=0,ipadx=10, ipady=5, padx=0, pady=0)
 
 
 root.mainloop()
