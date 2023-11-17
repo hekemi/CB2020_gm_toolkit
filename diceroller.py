@@ -3,18 +3,12 @@ import random
 def dice(roll):
     
     roll = roll.split('d')
-    roll[1] = roll[1].split(' ')
-
-    del roll[1][1]
-    roll[0] = int(roll[0]) *  int(roll[1][0])
-    del roll[1][0]
-    roll[0] = int(roll[0]) + int(roll[1][0])
-    del roll[1][0]
-
-    roll[1][0]
-    print(roll)
-
-    return roll
+    temp = roll.pop(1)
+    for i in temp:
+        if i.isnumeric():
+            roll.append(i)
+    roll = list(map(int, roll))
+    return roll[0] * random.randint(1, roll[1]) + roll[2]
 
 
 print(dice(input()))
