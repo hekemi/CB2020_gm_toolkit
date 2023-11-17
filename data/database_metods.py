@@ -2,7 +2,7 @@ import sqlite3
 
 
 def create_new_character(name):
-    connection = sqlite3.connect(f'characters\{name}.db')
+    connection = sqlite3.connect(f'data\characters\{name}.db')
     cursor = connection.cursor()
 
 
