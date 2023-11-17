@@ -36,5 +36,7 @@ DataForts.grid(row=2,column=2,ipadx=10, ipady=5, padx=0, pady=0)
 DrugLab = ttk.Button(text="Лаборатория")
 DrugLab.grid(row=3,column=0,ipadx=10, ipady=5, padx=0, pady=0)
 
+Cyber = ttk.Button(text="Кибернетика")
+Cyber.grid(row=3,column=1,ipadx=10, ipady=5, padx=0, pady=0)
 
 root.mainloop()
