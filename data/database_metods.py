@@ -1,5 +1,6 @@
 import sqlite3
 import json
+import pandas as pd
 
 
 def create_new_character(name):
@@ -77,26 +78,22 @@ def create_new_character(name):
     connection.close()
 
 
-# That function need to be rewriteted to use in real code so pay attention
-# + u need to create a table first
-# so i just will ctrl+c ctrl+v when needed
-def add_table_to_Motherbase(file_name):
+def json_to_df_to_Motherbase(path, name):
+    connection = sqlite3.connect('data\Motherbase.db')
     dll = []
-    with open(f'data\jsons\{file_name}.json', 'r', encoding='utf-8-sig') as f:
+    with open(path, 'r', encoding='utf-8-sig') as f:
         data = json.load(f)
         for i in data['items']:
-            if i['Cost'] == '':
-                dll.append([i['Name'], i['TYPE'], 'set by gm'])
-                continue
-            dll.append([i['Name'], i['TYPE'], i['Cost']])
+            dll.append(i)
 
-
-
-    connection = sqlite3.connect('data\Motherbase.db')
-    cursor = connection.cursor()
-
-    for i in dll:
-        cursor.execute(f'INSERT INTO {file_name} (name, category, cost) VALUES (?, ?, ?)', (i[0], i[1], i[2]))
-
-    connection.commit()
-    connection.close()
+    df = pd.DataFrame(dll)
+    del df['img1']
+    del df['img2']
+    del df['CATEGORY']
+    try:
+        del df['Pg']
+    except:
+        pass
+    df = df[df['Source'] == 'CP20']
+    del df['Source']
+    df.to_sql(name, connection, index=False)
