@@ -1,4 +1,5 @@
 import sqlite3
+import json
 
 
 def create_new_character(name):
@@ -72,5 +73,30 @@ def create_new_character(name):
         )
         ''')
     
+    connection.commit()
+    connection.close()
+
+
+# That function need to be rewriteted to use in real code so pay attention
+# + u need to create a table first
+# so i just will ctrl+c ctrl+v when needed
+def add_table_to_Motherbase(file_name):
+    dll = []
+    with open(f'data\jsons\{file_name}.json', 'r', encoding='utf-8-sig') as f:
+        data = json.load(f)
+        for i in data['items']:
+            if i['Cost'] == '':
+                dll.append([i['Name'], i['TYPE'], 'set by gm'])
+                continue
+            dll.append([i['Name'], i['TYPE'], i['Cost']])
+
+
+
+    connection = sqlite3.connect('data\Motherbase.db')
+    cursor = connection.cursor()
+
+    for i in dll:
+        cursor.execute(f'INSERT INTO {file_name} (name, category, cost) VALUES (?, ?, ?)', (i[0], i[1], i[2]))
+
     connection.commit()
     connection.close()
