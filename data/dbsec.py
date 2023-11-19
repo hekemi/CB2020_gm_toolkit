@@ -6,7 +6,7 @@ db = Db('data\Motherbase.db')
 cursor = db.connect()
 
 cursor.execute('''
-SELECT * FROM Weapons
+
 ''')
 
 db.disconnect()
