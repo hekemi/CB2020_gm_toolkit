@@ -15,10 +15,7 @@ class Db():
         self.connection.close()
 
 
-    def create_new_character(name):
-        connection = sqlite3.connect(f'data\characters\{name}.db')
-        cursor = connection.cursor()
-
+    def create_new_character(name, cursor):
 
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS Gear(
@@ -85,13 +82,9 @@ class Db():
             link TEXT NOT NULL PRIMARY KEY
             )
             ''')
-        
-        connection.commit()
-        connection.close()
 
 
-    def json_to_df_to_Motherbase(path, name):
-        connection = sqlite3.connect('data\Motherbase.db')
+    def json_to_df_to_Motherbase(path, name, connection):
         dll = []
         with open(path, 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
