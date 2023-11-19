@@ -1,13 +1,12 @@
 import sqlite3
-import database_metods as db_m
+from database_metods import *
 import json
 
-connection = sqlite3.connect('data\Motherbase.db')
-cursor = connection.cursor()
-
+db = Db('data\Motherbase.db')
+cursor = db.connect()
 
 cursor.execute('''
+SELECT * FROM Weapons
 ''')
 
-connection.commit()
-connection.close()
+db.disconnect()
