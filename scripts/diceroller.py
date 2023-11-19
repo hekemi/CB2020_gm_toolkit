@@ -18,6 +18,3 @@ def dice(roll):
     return sum(rd)
 
 print(dice(input()))
-
-# Я ДУРАЧОК
-# 6d6 + 2
