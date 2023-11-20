@@ -2,17 +2,17 @@ import sqlite3
 import json
 import pandas as pd
 
-class Db():
+class Database():
     def __init__(self, path):
         self.path = path
         self.connection = sqlite3.connect(path)
-
-    def connect(self):
-        return self.connection.cursor()
     
     def disconnect(self):
         self.connection.commit()
         self.connection.close()
+    
+    def execute(self, request):
+        self.connection.execute(request) 
 
 
     def create_new_character(name, cursor):
