@@ -6,17 +6,20 @@ class Database():
     def __init__(self, path):
         self.path = path
         self.connection = sqlite3.connect(path)
+        self.cursor = self.connection.cursor()
     
     def disconnect(self):
         self.connection.commit()
         self.connection.close()
     
     def execute(self, request):
-        self.connection.execute(request) 
+        self.cursor.execute(request) 
 
 
-    def create_new_character(name, cursor):
-
+    #Create a new db for character
+    def create_new_character(self, name):
+        connection = sqlite3.connect(f'data/characters/{name}')
+        cursor = connection.cursor()
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS Gear(
             id INTEGER PRIMARY KEY,
@@ -82,23 +85,33 @@ class Database():
             link TEXT NOT NULL PRIMARY KEY
             )
             ''')
+        connection.commit()
+        connection.close()
 
-
-    def json_to_df_to_Motherbase(path, name, connection):
+    def json_to_Motherbase(self, path_to_json, name, source='CP20'):
         dll = []
-        with open(path, 'r', encoding='utf-8-sig') as f:
+        with open(path_to_json, 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
             for i in data['items']:
                 dll.append(i)
 
         df = pd.DataFrame(dll)
-        del df['img1']
-        del df['img2']
-        del df['CATEGORY']
+        try:
+            del df['img1']
+        except:
+            pass
+        try:
+            del df['img2']
+        except:
+            pass
+        try:
+            del df['CATEGORY']
+        except:
+            pass
         try:
             del df['Pg']
         except:
             pass
-        df = df[df['Source'] == 'CP20']
+        df = df[df['Source'] == source]
         del df['Source']
-        df.to_sql(name, connection, index=False)
+        df.to_sql(name, self.connection, index=False)
