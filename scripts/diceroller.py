@@ -17,4 +17,3 @@ def dice(roll):
         rd.append(random.randint(1, roll[1]))
     return sum(rd)
 
-print(dice(input()))

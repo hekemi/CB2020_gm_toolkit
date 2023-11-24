@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from GUI.DiceRoller import DiceRoller
+from DiceRoller import DiceRoller
 
 
 class MainWindow():
