@@ -28,11 +28,6 @@ class RollerWindow(QtWidgets.QMainWindow, Roller.Ui_RollDice):
 
 
 
-
-
-
-
-
 class MainMenu(QtWidgets.QMainWindow, GUI_PY.Ui_MainWindow):
     def __init__(self):
         super(MainMenu,self).__init__()
