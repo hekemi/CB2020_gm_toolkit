@@ -1,9 +1,12 @@
+import os
 import sys
 from PyQt5 import QtWidgets
 import GUI_PY
 import Roller
 
-from GUI_Pyqt.diceroller import *
+
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
+from scripts import diceroller
 
 
 
