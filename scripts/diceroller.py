@@ -1,5 +1,6 @@
 import random
 
+
 def dice(roll):
     rd = []
     roll = roll.split('d')

@@ -1,8 +1,10 @@
-import sys  
+import sys
 from PyQt5 import QtWidgets
 import GUI_PY
 import Roller
-# from ..scripts import diceroller
+
+from ..scripts.diceroller import dice
+
 
 
 # Чтобы конвертировать .ui в .py используй команду
@@ -13,7 +15,8 @@ class RollerWindow(QtWidgets.QMainWindow, Roller.Ui_RollDice):
         super(RollerWindow, self).__init__()
         self.setupUi(self)
 
-        
+
+
 
 
 
