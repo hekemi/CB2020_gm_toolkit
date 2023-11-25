@@ -18,3 +18,6 @@ def dice(roll):
         rd.append(random.randint(1, roll[1]))
     return sum(rd)
 
+
+if __name__ == '__main__':
+    pass

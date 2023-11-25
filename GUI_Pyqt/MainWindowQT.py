@@ -1,10 +1,12 @@
+import os
 import sys
 from PyQt5 import QtWidgets
 import GUI_PY
 import Roller
 
-from ..scripts.diceroller import dice
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
+from scripts import diceroller
 
 
 # Чтобы конвертировать .ui в .py используй команду
@@ -16,11 +18,6 @@ class RollerWindow(QtWidgets.QMainWindow, Roller.Ui_RollDice):
         self.setupUi(self)
 
 
-
-
-
-
-
 class MainMenu(QtWidgets.QMainWindow, GUI_PY.Ui_MainWindow):
     def __init__(self):
         super(MainMenu,self).__init__()
@@ -30,14 +27,6 @@ class MainMenu(QtWidgets.QMainWindow, GUI_PY.Ui_MainWindow):
     
     def Roll(self):
         self.dialog.show()
-
-
-        
-        
-
-
-
-
 
 
 def main():
