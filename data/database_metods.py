@@ -15,8 +15,10 @@ class Database():
     def execute(self, request):
         self.cursor.execute(request) 
 
-    def dbtabel_to_df(self):
-        pass
+    def dbtabel_to_df(self, name):
+        self.execute(f'SELECT * FROM {name}')
+        lst = self.cursor.fetchall()
+        return pd.DataFrame(lst, columns=[c[0] for c in self.cursor.description])
 
 
     #Create a new db for character
