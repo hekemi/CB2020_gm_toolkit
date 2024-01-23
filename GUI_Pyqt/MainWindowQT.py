@@ -34,6 +34,9 @@ class InventoryManagerWindow(QtWidgets.QMainWindow, inventoryManager.Ui_Inventor
         super(InventoryManagerWindow, self).__init__() 
         self.setupUi(self)
         self.CharacSel.addItems(inventory_manager.names())
+    
+    def return_name(self):
+        return self.CharacSel.currentText()
 
 
 
