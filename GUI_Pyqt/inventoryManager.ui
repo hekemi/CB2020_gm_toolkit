@@ -242,7 +242,7 @@
       <x>360</x>
       <y>10</y>
       <width>160</width>
-      <height>41</height>
+      <height>51</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_5">
@@ -509,6 +509,19 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="Load">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
