@@ -20,10 +20,9 @@ class Database():
         lst = self.cursor.fetchall()
         return pd.DataFrame(lst, columns=[c[0] for c in self.cursor.description])
 
-
     #Create a new db for character
     def create_new_character(self, name):
-        connection = sqlite3.connect(f'data/characters/{name}')
+        connection = sqlite3.connect(f'data/characters/{name}.db')
         cursor = connection.cursor()
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS Gear(
@@ -121,3 +120,12 @@ class Database():
         df = df[df['Source'] == source]
         del df['Source']
         df.to_sql(name, self.connection, index=False)
+
+def extract_stats(name):
+    db = Database(f'data\characters\{name}.db')
+    data = db.dbtabel_to_df('Stats')
+    db.disconnect()
+    return data
+
+def show_stat(from_where, name):
+    return (from_where[from_where['name'] == name].values[0])[2]
