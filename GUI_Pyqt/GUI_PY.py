@@ -24,9 +24,9 @@ class Ui_MainWindow(object):
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
-        self.Inventory = QtWidgets.QPushButton(self.gridLayoutWidget)
-        self.Inventory.setObjectName("Inventory")
-        self.gridLayout.addWidget(self.Inventory, 0, 1, 1, 1)
+        self.InventoryMain = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.InventoryMain.setObjectName("InventoryMain")
+        self.gridLayout.addWidget(self.InventoryMain, 0, 1, 1, 1)
         self.Diceroller = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.Diceroller.setObjectName("Diceroller")
         self.gridLayout.addWidget(self.Diceroller, 0, 0, 1, 1)
@@ -77,7 +77,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.Inventory.setText(_translate("MainWindow", "Инвентарь"))
+        self.InventoryMain.setText(_translate("MainWindow", "Инвентарь"))
         self.Diceroller.setText(_translate("MainWindow", "Dice Roller"))
         self.DataFort.setText(_translate("MainWindow", "ДатаФорт"))
         self.Fight.setText(_translate("MainWindow", "Бой"))

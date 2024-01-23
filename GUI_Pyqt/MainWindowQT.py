@@ -1,9 +1,11 @@
 import os
 import sys
 from PyQt5 import QtWidgets
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget
 import GUI_PY
 import Roller
-
+import inventoryManager
 
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from scripts import diceroller
@@ -19,11 +21,18 @@ class RollerWindow(QtWidgets.QMainWindow, Roller.Ui_RollDice):
         super(RollerWindow, self).__init__()
         self.setupUi(self)
         self.BtnRoll.clicked.connect(self.Roll)
+
     
     def Roll(self):
         text = self.Input.text()
         temp = str(diceroller.dice(text))
         self.Output.setText(temp)
+
+class InventoryManagerWindow(QtWidgets.QMainWindow, inventoryManager.Ui_InventoryManager):
+    def __init__(self):
+        super(InventoryManagerWindow, self).__init__() 
+        self.setupUi(self)
+
 
 
 
@@ -32,14 +41,31 @@ class MainMenu(QtWidgets.QMainWindow, GUI_PY.Ui_MainWindow):
     def __init__(self):
         super(MainMenu,self).__init__()
         self.setupUi(self) 
-        self.Diceroller.clicked.connect(self.Roll)
-        self.dialog = RollerWindow()
+        self.init_Roll()
+        self.init_Inv()
+
+
+
+    def init_Roll(self):
+        self.Diceroller.clicked.connect(self.show_roll_window)
     
-    def Roll(self):
-        self.dialog.show()
+    def show_roll_window(self):
+        self.r = RollerWindow()
+        self.r.show()
 
 
-        
+    def init_Inv(self):
+        # НЕ ЗАБЫТЬ ПЕРЕИМЕНОВАТЬ КНОПКУ В GUI_PY!!!!!
+        self.InventoryMain.clicked.connect(self.show_inv_window)
+
+    def show_inv_window(self):
+        self.i = InventoryManagerWindow()
+        self.i.show()
+
+
+
+
+
         
 
 
