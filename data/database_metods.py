@@ -15,6 +15,11 @@ class Database():
     def execute(self, request):
         self.cursor.execute(request) 
 
+    def dbtabel_to_df(self, name):
+        self.execute(f'SELECT * FROM {name}')
+        lst = self.cursor.fetchall()
+        return pd.DataFrame(lst, columns=[c[0] for c in self.cursor.description])
+
 
     #Create a new db for character
     def create_new_character(self, name):
@@ -88,6 +93,7 @@ class Database():
         connection.commit()
         connection.close()
 
+    #Metod to add something from json to motherbase
     def json_to_Motherbase(self, path_to_json, name, source='CP20'):
         dll = []
         with open(path_to_json, 'r', encoding='utf-8-sig') as f:
