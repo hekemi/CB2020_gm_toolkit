@@ -9,6 +9,7 @@ import inventoryManager
 
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from scripts import diceroller
+from scripts import inventory_manager
 
 
 
@@ -32,6 +33,7 @@ class InventoryManagerWindow(QtWidgets.QMainWindow, inventoryManager.Ui_Inventor
     def __init__(self):
         super(InventoryManagerWindow, self).__init__() 
         self.setupUi(self)
+        self.CharacSel.addItems(inventory_manager.names())
 
 
 

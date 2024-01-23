@@ -1,42 +1,50 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton
-
-
-class Window1(QWidget):
-    def __init__(self):
-        super(Window1, self).__init__()
-        self.setWindowTitle('Window1')
-        self.setMinimumWidth(200)
-        self.setMinimumHeight(50)
-        self.button = QPushButton(self)
-        self.button.setText('Ok')
-        self.button.show()
-
-
-class Window2(QWidget):
-    def __init__(self):
-        super(Window2, self).__init__()
-        self.setWindowTitle('Window2')
-
-
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super(MainWindow, self).__init__()
-        self.setWindowTitle('MainWindow')
-
-    def show_window_1(self):
-        self.w1 = Window1()
-        self.w1.button.clicked.connect(self.show_window_2)
-        self.w1.button.clicked.connect(self.w1.close)
-        self.w1.show()
-
-    def show_window_2(self):
-        self.w2 = Window2()
-        self.w2.show()
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    w = MainWindow()
-    w.show()
-    w.show_window_1()
-    sys.exit(app.exec_())
+# importing libraries 
+from PyQt5.QtWidgets import * 
+from PyQt5 import QtCore, QtGui 
+from PyQt5.QtGui import * 
+from PyQt5.QtCore import * 
+import sys 
+  
+  
+class Window(QMainWindow): 
+  
+    def __init__(self): 
+        super().__init__() 
+  
+        # setting title 
+        self.setWindowTitle("Python ") 
+  
+        # setting geometry 
+        self.setGeometry(100, 100, 600, 400) 
+  
+        # calling method 
+        self.UiComponents() 
+  
+        # showing all the widgets 
+        self.show() 
+  
+    # method for widgets 
+    def UiComponents(self): 
+  
+        # creating a combo box widget 
+        combo_box = QComboBox(self) 
+  
+        # setting geometry of combo box 
+        combo_box.setGeometry(200, 150, 120, 40) 
+  
+        # adding items to combo box 
+        # adding Geek to the combobox 
+        combo_box.addItem("Geek") 
+        # adding Super Geek to the combobox 
+        combo_box.addItem("Super Geek") 
+        # adding Ultra Geek to the combobox 
+        combo_box.addItem("Ultra Geek") 
+  
+# create pyqt5 app 
+App = QApplication(sys.argv) 
+  
+# create the instance of our Window 
+window = Window() 
+  
+# start the app 
+sys.exit(App.exec()) 
