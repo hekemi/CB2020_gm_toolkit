@@ -2,11 +2,14 @@ import sqlite3
 from database_metods import *
 import json
 
-db = Database('data\Motherbase.db')
+# db = Database('data\characters\Fait.db')
 
 
-db.execute('''
+data = extract_stats('Fait')
+stat = show_stat(data, 'REF')
+print(stat)
 
-''')
 
-db.disconnect()
+# db.disconnect()
+
+# (data[data['name'] == 'REF'].values[0])[2]
