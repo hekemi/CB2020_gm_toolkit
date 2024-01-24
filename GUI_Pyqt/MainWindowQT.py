@@ -86,4 +86,4 @@ def main():
     app = QtWidgets.QApplication(sys.argv)  
     window = MainMenu()  
     window.show()  
-    app.exec_()
+    sys.exit(app.exec_())
