@@ -1,18 +1,5 @@
-import tkinter as tk
-from GUI.MainWindow import MainWindow
-
- 
-
-def main():
-    '''Входная точка приложения.'''
-    root = tk.Tk()
-    
-    top1 = root
-
-    MainWindow(top1)
-
-    root.mainloop()
+from GUI_Pyqt.MainWindowQT import *
+from data.database_metods import *
 
 
-if __name__ == "__main__":
-    main()
+main()

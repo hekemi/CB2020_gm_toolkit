@@ -2,12 +2,7 @@ import sys
 import os
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from data.database_metods import *
-from GUI_Pyqt import return_name
 
-# self.CharacSel = QtWidgets.QComboBox(self.centralwidget)
-# self.CharacSel.setGeometry(QtCore.QRect(10, 10, 151, 22))
-# self.CharacSel.setObjectName("CharacSel")
-# self.RoleLb = QtWidgets.QLabel(self.centralwidget)
 def names():
     names = os.listdir('data\characters')
     actual_name = []

@@ -3,9 +3,9 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget
-import GUI_PY
-import Roller
-import inventoryManager
+from GUI_Pyqt import GUI_PY
+from GUI_Pyqt import Roller
+from GUI_Pyqt import inventoryManager
 
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from scripts import diceroller
@@ -85,7 +85,4 @@ def main():
     app = QtWidgets.QApplication(sys.argv)  
     window = MainMenu()  
     window.show()  
-    app.exec_()  
-main()
-
-
+    app.exec_()
