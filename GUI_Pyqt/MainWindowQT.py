@@ -11,7 +11,8 @@ sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from scripts import diceroller
 from scripts import inventory_manager
 
-
+global retured_name
+retured_name = ""
 
 
 # Чтобы конвертировать .ui в .py используй команду
@@ -37,7 +38,7 @@ class InventoryManagerWindow(QtWidgets.QMainWindow, inventoryManager.Ui_Inventor
         self.Load.clicked.connect(self.return_name)
     
     def return_name(self):
-        return self.CharacSel.currentText()
+        retured_name = self.CharacSel.currentText()
 
 
 
