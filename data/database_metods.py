@@ -20,78 +20,6 @@ class Database():
         lst = self.cursor.fetchall()
         return pd.DataFrame(lst, columns=[c[0] for c in self.cursor.description])
 
-    #Create a new db for character
-    def create_new_character(self, name):
-        connection = sqlite3.connect(f'data/characters/{name}.db')
-        cursor = connection.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS Gear(
-            id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            class TEXT NOT NULL,
-            price INTEGER,
-            quantity INTEGER
-            )
-            ''')        
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS Weapons(
-            id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            type TEXT NOT NULL,
-            accuracy INTEGER,
-            stealthiness INTEGER,
-            availability TEXT NOT NULL,
-            damage TEXT NOT NULL,
-            bullet_type TEXT NOT NULL,
-            ammo INTEGER,
-            ROF INTEGER
-            )
-            ''')        
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS Cyberneticks(
-            id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            humanity INTEGER,
-            cost INTEGER
-            )
-            ''')        
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS Stats(
-            name TEXT NOT NULL PRIMARY KEY,
-            previous_stat INTEGER,
-            actual_stat INTEGER
-            )
-            ''')        
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS Balance(
-            id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            money INTEGER,
-            op_type INTEGER
-            )
-            ''')        
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS Health(
-            id INTEGER PRIMARY KEY,
-            limb TEXT NOT NULL,
-            armor INTEGER,
-            SDP INTEGER
-            )
-            ''')        
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS Story(
-            link TEXT NOT NULL PRIMARY KEY
-            )
-            ''')
-        connection.commit()
-        connection.close()
-
     #Metod to add something from json to motherbase
     def json_to_Motherbase(self, path_to_json, name, source='CP20'):
         dll = []
@@ -129,3 +57,75 @@ def extract_stats(name):
 
 def show_stat(from_where, name):
     return (from_where[from_where['name'] == name].values[0])[2]
+
+#Create a new db for character
+def create_new_character(self, name):
+    connection = sqlite3.connect(f'data/characters/{name}.db')
+    cursor = connection.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Gear(
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        class TEXT NOT NULL,
+        price INTEGER,
+        quantity INTEGER
+        )
+        ''')        
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Weapons(
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        type TEXT NOT NULL,
+        accuracy INTEGER,
+        stealthiness INTEGER,
+        availability TEXT NOT NULL,
+        damage TEXT NOT NULL,
+        bullet_type TEXT NOT NULL,
+        ammo INTEGER,
+        ROF INTEGER
+        )
+        ''')        
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Cyberneticks(
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        humanity INTEGER,
+        cost INTEGER
+        )
+        ''')        
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Stats(
+        name TEXT NOT NULL PRIMARY KEY,
+        previous_stat INTEGER,
+        actual_stat INTEGER
+        )
+        ''')        
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Balance(
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        money INTEGER,
+        op_type INTEGER
+        )
+        ''')        
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Health(
+        id INTEGER PRIMARY KEY,
+        limb TEXT NOT NULL,
+        armor INTEGER,
+        SDP INTEGER
+        )
+        ''')        
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Story(
+        link TEXT NOT NULL PRIMARY KEY
+        )
+        ''')
+    connection.commit()
+    connection.close()
