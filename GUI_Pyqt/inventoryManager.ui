@@ -73,7 +73,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="HP">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -271,14 +271,14 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_4">
+      <widget class="QLineEdit" name="MBOD">
        <property name="readOnly">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QLineEdit" name="lineEdit_5">
+      <widget class="QLineEdit" name="SAVE">
        <property name="readOnly">
         <bool>true</bool>
        </property>
