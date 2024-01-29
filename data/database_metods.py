@@ -1,3 +1,5 @@
+import os 
+import sys
 import sqlite3
 import json
 import pandas as pd
@@ -131,3 +133,11 @@ def json_to_Motherbase(self, path_to_json, name, source='CP20'):
     df = df[df['Source'] == source]
     del df['Source']
     df.to_sql(name, self.connection, index=False)
+
+
+def names():
+    names = os.listdir('data\characters')
+    actual_name = []
+    for i in names:
+        actual_name.append(i[:-3])
+    return actual_name
