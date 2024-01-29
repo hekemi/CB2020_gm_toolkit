@@ -36,20 +36,19 @@ def extract_stats(name):
     return data
 
 def show_stat(from_where, name):
-    return (from_where[from_where['name'] == name].values[0])[2]
+    return (from_where[from_where['name'] == name].values[0])[1]
 
 #Create a new db for character
 def create_new_character(self, name):
     connection = sqlite3.connect(f'data/characters/{name}.db')
     cursor = connection.cursor()
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Gear(
-        id INTEGER PRIMARY KEY,
-        name TEXT NOT NULL,
-        class TEXT NOT NULL,
-        price INTEGER,
-        quantity INTEGER
-        )
+        CREATE TABLE Cyberneticks (
+        id       INTEGER PRIMARY KEY,
+        name     TEXT    NOT NULL,
+        humanity INTEGER,
+        cost     INTEGER
+        );
         ''')        
 
     cursor.execute('''
