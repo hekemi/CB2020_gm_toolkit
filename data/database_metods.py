@@ -40,8 +40,10 @@ def extract_stats(name):
 def show_stat(from_where, name):
     return (from_where[from_where['name'] == name].values[0])[1]
 
-def show_info(from_where, name, id=0):
-    return (from_where[name].values[id])
+def show_info(from_where, name, index=True, id=0):
+    if index:
+        return (from_where.iat[id, name])
+    return (from_where[from_where['name'] == name].values[id])
 
 #Create a new db for character
 def create_new_character(name):
@@ -49,7 +51,7 @@ def create_new_character(name):
     cursor = connection.cursor()
     cursor.execute('''
         CREATE TABLE Cyberneticks (
-        id       INTEGER PRIMARY KEY,
+        id       INTEGER PRIMARY KEY AUTOINCREMENT,
         name     TEXT    NOT NULL,
         humanity INTEGER,
         cost     INTEGER
@@ -58,7 +60,7 @@ def create_new_character(name):
 
     cursor.execute('''
         CREATE TABLE Gear (
-        id       INTEGER PRIMARY KEY,
+        id       INTEGER PRIMARY KEY AUTOINCREMENT,
         name     TEXT    NOT NULL,
         class    TEXT    NOT NULL,
         price    INTEGER,
@@ -68,7 +70,7 @@ def create_new_character(name):
 
     cursor.execute('''
         CREATE TABLE Health (
-        id    INTEGER PRIMARY KEY,
+        id    INTEGER PRIMARY KEY AUTOINCREMENT,
         limb  TEXT    NOT NULL,
         armor INTEGER,
         SDP   INTEGER
@@ -92,7 +94,7 @@ def create_new_character(name):
 
     cursor.execute('''
         CREATE TABLE Weapons (
-        id           INTEGER PRIMARY KEY,
+        id           INTEGER PRIMARY KEY AUTOINCREMENT,
         name         TEXT    NOT NULL,
         type         TEXT    NOT NULL,
         accuracy     INTEGER,
