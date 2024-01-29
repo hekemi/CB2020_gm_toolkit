@@ -31,7 +31,7 @@ def extract_stats(name):
     Info = db.dbtabel_to_df('Info')
     Stats = db.dbtabel_to_df('Stats')
     Weapons = db.dbtabel_to_df('Weapons')
-    data = [Cyberneticks, Gear, Health, Info, Stats, Weapons]
+    data = {'Cyberneticks': Cyberneticks, 'Gear': Gear, 'Health': Health, 'Info': Info, 'Stats': Stats, 'Weapons': Weapons}
     db.disconnect()
     return data
 
