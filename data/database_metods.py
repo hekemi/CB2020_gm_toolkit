@@ -21,37 +21,17 @@ class Database():
         return pd.DataFrame(lst, columns=[c[0] for c in self.cursor.description])
 
     #Metod to add something from json to motherbase
-    def json_to_Motherbase(self, path_to_json, name, source='CP20'):
-        dll = []
-        with open(path_to_json, 'r', encoding='utf-8-sig') as f:
-            data = json.load(f)
-            for i in data['items']:
-                dll.append(i)
 
-        df = pd.DataFrame(dll)
-        try:
-            del df['img1']
-        except:
-            pass
-        try:
-            del df['img2']
-        except:
-            pass
-        try:
-            del df['CATEGORY']
-        except:
-            pass
-        try:
-            del df['Pg']
-        except:
-            pass
-        df = df[df['Source'] == source]
-        del df['Source']
-        df.to_sql(name, self.connection, index=False)
 
 def extract_stats(name):
     db = Database(f'data\characters\{name}.db')
-    data = db.dbtabel_to_df('Stats')
+    Cyberneticks = db.dbtabel_to_df('Cyberneticks')
+    Gear = db.dbtabel_to_df('Gear')
+    Health = db.dbtabel_to_df('Health')
+    Info = db.dbtabel_to_df('Info')
+    Stats = db.dbtabel_to_df('Stats')
+    Weapons = db.dbtabel_to_df('Weapons')
+    data = [Cyberneticks, Gear, Health, Info, Stats, Weapons]
     db.disconnect()
     return data
 
@@ -129,3 +109,32 @@ def create_new_character(self, name):
         ''')
     connection.commit()
     connection.close()
+
+
+def json_to_Motherbase(self, path_to_json, name, source='CP20'):
+    dll = []
+    with open(path_to_json, 'r', encoding='utf-8-sig') as f:
+        data = json.load(f)
+        for i in data['items']:
+            dll.append(i)
+
+    df = pd.DataFrame(dll)
+    try:
+        del df['img1']
+    except:
+        pass
+    try:
+        del df['img2']
+    except:
+        pass
+    try:
+        del df['CATEGORY']
+    except:
+        pass
+    try:
+        del df['Pg']
+    except:
+        pass
+    df = df[df['Source'] == source]
+    del df['Source']
+    df.to_sql(name, self.connection, index=False)
