@@ -40,6 +40,9 @@ def extract_stats(name):
 def show_stat(from_where, name):
     return (from_where[from_where['name'] == name].values[0])[1]
 
+def show_info(from_where, name, id=0):
+    return (from_where[name].values[id])
+
 #Create a new db for character
 def create_new_character(name):
     connection = sqlite3.connect(f'data/characters/{name}.db')
