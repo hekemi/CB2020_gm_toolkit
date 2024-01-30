@@ -19,6 +19,8 @@ sel_char = None
 
 # Чтобы конвертировать .ui в .py используй команду
 # pyuic5 C:\CyberPunkProject\CB2020_gm_toolkit\GUI_Pyqt\GUI_UI.ui -o C:\CyberPunkProject\CB2020_gm_toolkit\GUI_Pyqt\GUI_PY.py
+# pyuic5 C:\CyberPunkProject\CB2020_gm_toolkit\GUI_Pyqt\inventoryManager.ui -o C:\CyberPunkProject\CB2020_gm_toolkit\GUI_Pyqt\inventoryManager.py
+
 
 class RollerWindow(QtWidgets.QMainWindow, Roller.Ui_RollDice):
     def __init__(self):
@@ -38,7 +40,7 @@ class InventoryManagerWindow(QtWidgets.QMainWindow, inventoryManager.Ui_Inventor
         self.setupUi(self)
         self.CharacSel.addItems(inventory_manager.names())
         self.Load.clicked.connect(self.get_character)
-    
+       
     def get_character(self):
         returned_name = self.CharacSel.currentText()
         sel_char = extract_stats(returned_name)
