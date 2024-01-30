@@ -22,7 +22,6 @@ class Database():
         lst = self.cursor.fetchall()
         return pd.DataFrame(lst, columns=[c[0] for c in self.cursor.description])
 
-    #Metod to add something from json to motherbase
 
 
 def extract_stats(name):
@@ -47,7 +46,7 @@ def show_stat(from_where, name):
 def show_info(from_where, name, id=0):
     return (from_where[name].values[id])
 
-#Create a new db for character
+
 def create_new_character(name):
     connection = sqlite3.connect(f'data/characters/{name}.db')
     cursor = connection.cursor()
