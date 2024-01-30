@@ -10,7 +10,6 @@ from GUI_Pyqt import inventoryManager
 
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from scripts import diceroller
-from scripts import inventory_manager
 from data.database_metods import * 
 
 global returned_name
